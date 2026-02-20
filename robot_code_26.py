@@ -1,4 +1,6 @@
+# TODO: insert robot code here
 import wpilib
+from wpilib.drive import DifferentialDrive
 from rev import SparkMax, SparkLowLevel
 
 '''
@@ -17,15 +19,15 @@ class MyRobot(wpilib.TimedRobot):
     def robotInit(self):
         
         # Motor controller setup
-        self.leftFront = wpilib.SparkMax(0, wpilib.SparkLowLevel.MotorType.kBrushed)
-        self.rightFront = wpilib.SparkMax(1, wpilib.SparkLowLevel.MotorType.kBrushed)
-        self.leftRear = wpilib.SparkMax(2, wpilib.SparkLowLevel.MotorType.kBrushed)
-        self.rightRear = wpilib.SparkMax(3, wpilib.SparkLowLevel.MotorType.kBrushed)
-        self.intake = wpilib.SparkMax(4, wpilib.SparkLowLevel.MotorType.kBrushed)
-        self.shooter = wpilib.SparkMax(5, wpilib.SparkLowLevel.MotorType.kBrushed)
+        self.leftFront = SparkMax(1, SparkLowLevel.MotorType.kBrushed)
+        self.rightFront = SparkMax(2, SparkLowLevel.MotorType.kBrushed)
+        self.leftRear = SparkMax(3, SparkLowLevel.MotorType.kBrushed)
+        self.rightRear = SparkMax(4, SparkLowLevel.MotorType.kBrushed)
+        self.intake = SparkMax(6, SparkLowLevel.MotorType.kBrushed)
+        self.shooter = SparkMax(5, SparkLowLevel.MotorType.kBrushed)
         
         # Tank drive setup
-        self.drive = wpilib.TankDrive(self.leftFront, self.leftRear, self.rightFront, self.rightRear)
+        self.drive = DifferentialDrive(self.leftFront, self.leftRear, self.rightFront, self.rightRear)
         
         # Controller setup 
         self.controller = wpilib.XboxController(0)
